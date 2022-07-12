@@ -1,3 +1,6 @@
+:root {
+  --text-grey: #4e4e4e;
+}
 .flex-center {
   display: flex;
   align-items: center;
@@ -6,24 +9,11 @@
 
 .flex-center > * {
   margin: auto 1em;
+  flex: 1 1 0; /* Make same width */
 }
 
 .prop {
   font-style: italic;
-  display: inline-block;
-  /* border-bottom: 2pt solid var(--r-main-color); */
-  text-decoration: underline;
-  text-decoration-thickness: 2pt;
-}
-
-.prop:after {
-  position: relative;
-  display: inline-block;
-  content: '\2B9E';
-  font-style: normal;
-  font-size: 0.5em;
-  bottom: -0.5em;
-  margin-left: -0.3em;
 }
 
 /* Masthead in combined image/text header */
@@ -47,4 +37,26 @@
 .reveal h5:last-child,
 .reveal h6:last-child {
   margin: var(--r-heading-margin);
+}
+
+/* Small notes below list items (references etc) */
+.note {
+  display: block;
+  font-size: 0.5em;
+  color: var(--text-grey);
+  margin-top: -0.2em;
+  text-transform: initial;
+  font-weight: initial;
+}
+
+/* Column helper (grid) */
+.columns {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+/* External links */
+.reveal a[href^='http'] {
+  color: var(--r-main-color);
+  text-decoration: none;
 }
