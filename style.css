@@ -1,6 +1,8 @@
 :root {
   --text-grey: #4e4e4e;
+  --r-heading-text-transform: none; /* No all-caps headings */
 }
+
 .flex-center {
   display: flex;
   align-items: center;
@@ -8,7 +10,7 @@
 }
 
 .flex-center > * {
-  margin: auto 1em;
+  margin: 0 1em;
   flex: 1 1 0; /* Make same width */
 }
 
