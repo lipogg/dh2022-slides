@@ -271,14 +271,228 @@
         </section>
 
         <section>
-          <section>
-            3. Introducing Gender Qualifiers: Examples and Querying
+          <section data-background-color="var(--dark-salmon)">
+            <h2>
+              <span class="r-fit-text">Querying</span>
+            </h2>
           </section>
 
-          <section></section>
-          <section></section>
-          <section></section>
-          <section></section>
+          <section>
+            <h2>Wikibase Ranks</h2>
+            <ul style="list-style-type: none">
+              <li>
+                <img
+                  class="icon"
+                  src="https://upload.wikimedia.org/wikipedia/commons/6/63/Preferred_rank.svg"
+                  alt="Wikibase preferred rank"
+                  title="Wikidata, CC0, via Wikimedia Commons"
+                />
+                – Preferred rank
+              </li>
+              <li>
+                <img
+                  class="icon"
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Normal_rank.svg"
+                  alt="Wikibase normal rank"
+                  title="Wikidata, CC0, via Wikimedia Commons"
+                />
+                – Normal rank
+              </li>
+              <li>
+                <img
+                  class="icon"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Deprecated_rank.svg"
+                  alt="Wikibase deprecated rank"
+                  title="Wikidata, CC0, via Wikimedia Commons"
+                />
+                – Deprecated rank
+              </li>
+            </ul>
+
+            <p class="fragment">
+              Queries return the highest-ranked statements by default.
+            </p>
+          </section>
+
+          <section>
+            <h2>Simple Query</h2>
+
+            <div class="r-stack">
+              <pre
+                class="fragment fade-out"
+                data-fragment-index="0"
+              ><code class="language-plain" data-trim data-noescape>
+                SELECT ?item ?itemLabel ?gender ?genderLabel WHERE {
+                  ?item wdt:P1 wd:Q51;
+                        wdt:P157 ?gender.
+
+                  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+                }
+              </code></pre>
+
+              <table
+                class="fragment"
+                data-fragment-index="0"
+                style="font-size: 0.5em"
+              >
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Public Universal Friend</td>
+                    <td>female</td>
+                  </tr>
+                  <tr>
+                    <td>Public Universal Friend</td>
+                    <td>agender</td>
+                  </tr>
+                  <tr>
+                    <td>Laxmi Narayan Tripathi</td>
+                    <td>hijra</td>
+                  </tr>
+                  <tr>
+                    <td>Murray Hall</td>
+                    <td>male</td>
+                  </tr>
+                  <tr>
+                    <td>Murray Hall</td>
+                    <td>female</td>
+                  </tr>
+                  <tr>
+                    <td>Yuu Watase</td>
+                    <td>X-gender</td>
+                  </tr>
+                  <tr>
+                    <td>Hastiin Tł’a</td>
+                    <td>nádleehi</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section>
+            <h2>Detailed Query</h2>
+
+            <pre
+              data-fragment-index="0"
+            ><code data-trim data-noescape data-line-numbers="|2-4|6-9|11-12">
+                SELECT ?item ?itemLabel ?gender ?genderLabel ?genderQualifier ?genderQualifierLabel ?rank ?genderModality ?genderModalityLabel WHERE {
+                  # Get instances of (P1) Person (Q51)
+                  ?item wdt:P1 wd:Q51;
+                        wdt:P157 ?gender.
+                  
+                  # Get rank and qualifier (P160)
+                  ?item p:P157 ?genderStatement.
+                  ?genderStatement wikibase:rank ?rank;
+                                   pq:P160 ?genderQualifier.
+                  
+                  # Get modality (P158)
+                  OPTIONAL { ?item wdt:P158 ?genderModality. }
+
+                  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+                }
+              </code></pre>
+          </section>
+
+          <section>
+            <table style="font-size: 0.5em">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Gender</th>
+                  <th>Gender qualifier</th>
+                  <th>Rank</th>
+                  <th>Gender modality</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Laxmi Narayan Tripathi</td>
+                  <td>hijra</td>
+                  <td>self-identified gender</td>
+                  <td>normal</td>
+                  <td>transgender</td>
+                </tr>
+                <tr>
+                  <td>Yuu Watase</td>
+                  <td>X-gender</td>
+                  <td>self-identified gender</td>
+                  <td>normal</td>
+                  <td></td>
+                </tr>
+                <tr
+                  class="fragment highlight-current-blue"
+                  data-fragment-index="1"
+                >
+                  <td>Public Universal Friend</td>
+                  <td>agender</td>
+                  <td>self-identified gender</td>
+                  <td>normal</td>
+                  <td></td>
+                </tr>
+                <tr
+                  class="fragment highlight-current-blue"
+                  data-fragment-index="1"
+                >
+                  <td>Public Universal Friend</td>
+                  <td>female</td>
+                  <td>recorded gender</td>
+                  <td>normal</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Hastiin Tł’a</td>
+                  <td>nádleehi</td>
+                  <td>assumed gender</td>
+                  <td>normal</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Hastiin Tł’a</td>
+                  <td>berdache</td>
+                  <td>recorded gender</td>
+                  <td>deprecated</td>
+                  <td></td>
+                </tr>
+                <tr
+                  class="fragment highlight-current-blue"
+                  data-fragment-index="2"
+                >
+                  <td>Murray Hall</td>
+                  <td>male</td>
+                  <td>lived gender</td>
+                  <td>normal</td>
+                  <td></td>
+                </tr>
+                <tr></tr>
+                <tr
+                  class="fragment highlight-current-blue"
+                  data-fragment-index="2"
+                >
+                  <td>Murray Hall</td>
+                  <td>male</td>
+                  <td>self-identified gender</td>
+                  <td>normal</td>
+                  <td></td>
+                </tr>
+                <tr
+                  class="fragment highlight-current-blue"
+                  data-fragment-index="2"
+                >
+                  <td>Murray Hall</td>
+                  <td>female</td>
+                  <td>recorded gender</td>
+                  <td>deprecated</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         </section>
         <section>
           <section>4. Gender as an Ontological Entity</section>

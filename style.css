@@ -1,6 +1,13 @@
 :root {
   --text-grey: #4e4e4e;
   --r-heading-text-transform: none; /* No all-caps headings */
+
+  /* Pallette */
+  --ming: #006d77ff;
+  --middle-blue-green: #83c5beff;
+  --alice-blue: #edf6f9ff;
+  --unbleached-silk: #ffddd2ff;
+  --dark-salmon: #e29578ff;
 }
 
 .flex-center {
@@ -69,4 +76,21 @@
   text-indent: -2em;
   text-align: left;
   font-size: 0.5em;
+}
+
+/* Code whitespace */
+.reveal .code-wrapper code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+/* Code line numbering width */
+.reveal .hljs-ln-numbers {
+  width: 3ex;
+}
+
+/* Inline icon image */
+.icon {
+  margin: 0;
+  height: 0.8em;
+  vertical-align: middle;
 }
