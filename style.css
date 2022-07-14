@@ -3,11 +3,11 @@
   --r-heading-text-transform: none; /* No all-caps headings */
 
   /* Pallette */
-  --ming: #006d77ff;
-  --middle-blue-green: #83c5beff;
-  --alice-blue: #edf6f9ff;
-  --unbleached-silk: #ffddd2ff;
-  --dark-salmon: #e29578ff;
+  --ming: #006d77;
+  --middle-blue-green: #83c5be;
+  --alice-blue: #edf6f9;
+  --unbleached-silk: #ffddd2;
+  --dark-salmon: #e29578;
 }
 
 .flex-center {
@@ -93,4 +93,29 @@
   margin: 0;
   height: 0.8em;
   vertical-align: middle;
+}
+
+/* Custom fragment style: highlight-marker, highlight-current marker */
+/* Use like highlight-red, highlight-current-red */
+.reveal .slides section .fragment.highlight-marker,
+.reveal .slides section .fragment.highlight-current-marker {
+  opacity: 1;
+  visibility: inherit;
+}
+.reveal .slides section .fragment.highlight-current-marker.current-fragment,
+.reveal .slides section .fragment.highlight-marker.visible,
+.marker {
+  /* https://max.hn/thoughts/how-to-create-a-highlighter-marker-effect-in-css */
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.8em 0.3em;
+  background: transparent;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 225, 0, 0.1),
+    rgba(255, 225, 0, 0.7) 4%,
+    rgba(255, 225, 0, 0.3)
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
