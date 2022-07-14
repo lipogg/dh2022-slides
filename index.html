@@ -423,8 +423,10 @@
               <pre
                 class="fragment fade-out"
                 data-fragment-index="0"
-              ><code class="language-plain" data-trim data-noescape>
+              ><code data-trim data-noescape>
                 SELECT ?item ?itemLabel ?gender ?genderLabel WHERE {
+                  # Get instances of (P1) Person (Q51)
+                  # Which have a gender property (P157)
                   ?item wdt:P1 wd:Q51;
                         wdt:P157 ?gender.
 
@@ -482,9 +484,10 @@
 
             <pre
               data-fragment-index="0"
-            ><code data-trim data-noescape data-line-numbers="|2-4|6-9|11-12">
+            ><code data-trim data-noescape data-line-numbers="|2-5|7-10|12-13">
                 SELECT ?item ?itemLabel ?gender ?genderLabel ?genderQualifier ?genderQualifierLabel ?rank ?genderModality ?genderModalityLabel WHERE {
                   # Get instances of (P1) Person (Q51)
+                  # Which have a gender property (P157)
                   ?item wdt:P1 wd:Q51;
                         wdt:P157 ?gender.
                   
