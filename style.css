@@ -101,6 +101,7 @@
 .reveal .slides section .fragment.highlight-current-marker {
   opacity: 1;
   visibility: inherit;
+  background-position-x: 100%;
 }
 .reveal .slides section .fragment.highlight-current-marker.current-fragment,
 .reveal .slides section .fragment.highlight-marker.visible,
@@ -114,8 +115,11 @@
     to right,
     rgba(255, 225, 0, 0.1),
     rgba(255, 225, 0, 0.7) 4%,
-    rgba(255, 225, 0, 0.3)
+    rgba(255, 225, 0, 0.3) 50%,
+    transparent 50%
   );
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+  background-size: 200% 100%;
+  background-position-x: 0;
 }
