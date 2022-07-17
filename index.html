@@ -854,9 +854,11 @@
           <section>
             <h2>Detailed Query</h2>
 
-            <pre
-              data-fragment-index="0"
-            ><code data-trim data-noescape data-line-numbers="|2-5|7-10|12-13">
+            <div class="r-stack">
+              <pre
+                class="fragment fade-out"
+                data-fragment-index="0"
+              ><code data-trim data-noescape>
                 SELECT ?item ?itemLabel ?gender ?genderLabel ?genderQualifier ?genderQualifierLabel ?rank ?genderModality ?genderModalityLabel WHERE {
                   # Get instances of (P1) Person (Q51)
                   # Which have a gender property (P157)
@@ -874,101 +876,98 @@
                   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
                 }
               </code></pre>
-          </section>
 
-          <section>
-            <table style="font-size: 0.5em">
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Gender</th>
-                  <th>Gender qualifier</th>
-                  <th>Rank</th>
-                  <th>Gender modality</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Laxmi Narayan Tripathi</td>
-                  <td>hijra</td>
-                  <td>self-identified gender</td>
-                  <td>normal</td>
-                  <td>transgender</td>
-                </tr>
-                <tr>
-                  <td>Yuu Watase</td>
-                  <td>X-gender</td>
-                  <td>self-identified gender</td>
-                  <td>normal</td>
-                  <td></td>
-                </tr>
-                <tr
-                  class="fragment highlight-current-marker"
-                  data-fragment-index="1"
-                >
-                  <td>Public Universal Friend</td>
-                  <td>agender</td>
-                  <td>self-identified gender</td>
-                  <td>normal</td>
-                  <td></td>
-                </tr>
-                <tr
-                  class="fragment highlight-current-marker"
-                  data-fragment-index="1"
-                >
-                  <td>Public Universal Friend</td>
-                  <td>female</td>
-                  <td>recorded gender</td>
-                  <td>normal</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Hastiin Tł’a</td>
-                  <td>nádleehi</td>
-                  <td>assumed gender</td>
-                  <td>normal</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Hastiin Tł’a</td>
-                  <td>berdache</td>
-                  <td>recorded gender</td>
-                  <td>deprecated</td>
-                  <td></td>
-                </tr>
-                <tr
-                  class="fragment highlight-current-marker"
-                  data-fragment-index="2"
-                >
-                  <td>Murray Hall</td>
-                  <td>male</td>
-                  <td>lived gender</td>
-                  <td>normal</td>
-                  <td></td>
-                </tr>
-                <tr></tr>
-                <tr
-                  class="fragment highlight-current-marker"
-                  data-fragment-index="2"
-                >
-                  <td>Murray Hall</td>
-                  <td>male</td>
-                  <td>self-identified gender</td>
-                  <td>normal</td>
-                  <td></td>
-                </tr>
-                <tr
-                  class="fragment highlight-current-marker"
-                  data-fragment-index="2"
-                >
-                  <td>Murray Hall</td>
-                  <td>female</td>
-                  <td>recorded gender</td>
-                  <td>deprecated</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+              <table
+                class="fragment"
+                data-fragment-index="0"
+                style="font-size: 0.5em"
+              >
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Gender</th>
+                    <th>Gender qualifier</th>
+                    <th>Rank</th>
+                    <th>Gender modality</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Laxmi Narayan Tripathi</td>
+                    <td>hijra</td>
+                    <td>self-identified gender</td>
+                    <td>normal</td>
+                    <td>transgender</td>
+                  </tr>
+                  <tr>
+                    <td>Yuu Watase</td>
+                    <td>X-gender</td>
+                    <td>self-identified gender</td>
+                    <td>normal</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Public Universal Friend</td>
+                    <td>agender</td>
+                    <td>self-identified gender</td>
+                    <td>normal</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Public Universal Friend</td>
+                    <td>female</td>
+                    <td>recorded gender</td>
+                    <td>normal</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Hastiin Tł’a</td>
+                    <td>nádleehi</td>
+                    <td>assumed gender</td>
+                    <td>normal</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Hastiin Tł’a</td>
+                    <td>berdache</td>
+                    <td>recorded gender</td>
+                    <td>deprecated</td>
+                    <td></td>
+                  </tr>
+                  <tr
+                    class="fragment highlight-current-marker"
+                    data-fragment-index="1"
+                  >
+                    <td>Murray Hall</td>
+                    <td>male</td>
+                    <td>lived gender</td>
+                    <td>normal</td>
+                    <td></td>
+                  </tr>
+                  <tr></tr>
+                  <tr
+                    class="fragment highlight-current-marker"
+                    data-fragment-index="1"
+                  >
+                    <td>Murray Hall</td>
+                    <td>male</td>
+                    <td>self-identified gender</td>
+                    <td>normal</td>
+                    <td></td>
+                  </tr>
+                  <tr
+                    class="fragment highlight-current-marker"
+                    data-fragment-index="1"
+                  >
+                    <td>Murray Hall</td>
+                    <td>female</td>
+                    <td>recorded gender</td>
+                    <td>deprecated</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </section>
         </section>
 
